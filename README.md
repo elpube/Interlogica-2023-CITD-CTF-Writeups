@@ -302,31 +302,31 @@ This is not the only payload. The shortest known payload is 97 characters long a
 ## eXSStravaganza level 10
 ### The sanitizer
 
-function sanitize(input) {
-// sanitization!
-const sanitized = input
-.replace(/[<>="&%$#\\/]/g, '')
-.split('\n')
-.map(row => 'eval(sanitizeAgainAgain(sanitizeAgain("' + row + '")))')
-.join('\n');
-return '  \x3Cscript>\n' + sanitized + '\n  \x3C/script>'
-}
+    function sanitize(input) {
+        // sanitization!
+        const sanitized = input
+            .replace(/[<>="&%$#\\/]/g, '')
+            .split('\n')
+            .map(row => 'eval(sanitizeAgainAgain(sanitizeAgain("' + row + '")))')
+            .join('\n');
+        return '  \x3Cscript>\n' + sanitized + '\n  \x3C/script>'
+    }
 
-var bad = ['<', '>', '&', '%', '$', '#', '[', ']', '|', '{', '}', ';', '\\', '/', ',', '"', '\'', '=', '`', '(', ')'];
+    var bad = ['<', '>', '&', '%', '$', '#', '[', ']', '|', '{', '}', ';', '\\', '/', ',', '"', '\'', '=', '`', '(', ')'];
 
-function sanitizeAgain(input) {
-// more sanitization!
-const sanitized = input.split('').filter(c => !bad.includes(c)).join('');
-return sanitized;
-}
+    function sanitizeAgain(input) {
+        // more sanitization!
+        const sanitized = input.split('').filter(c => !bad.includes(c)).join('');
+        return sanitized;
+    }
 
-var regex = /[^A-z.\-]/g
+    var regex = /[^A-z.\-]/g
 
-function sanitizeAgainAgain(input) {
-// even more sanitization!
-const sanitized = input.replace(regex, '');
-return sanitized;
-}
+    function sanitizeAgainAgain(input) {
+        // even more sanitization!
+        const sanitized = input.replace(regex, '');
+        return sanitized;
+    }
 
 ### The solution
 
